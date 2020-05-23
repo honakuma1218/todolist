@@ -18,7 +18,7 @@ const bgColor = document .querySelector('.bg');
 const colors =['bg1','bg2','bg3','bg4','bg5','bg6','bg7','bg8','bg9','bg10'];
 
  const createTodoList = (task,limit,note=none )=>{
-     const html = `<li class="addedTask"><div class="task_name">${task}</div><span>${limit}</span><small>${note}</small><img class="delete" src="/img/flower.svg"></li>`;
+     const html = `<li class="addedTask"><div class="task_name">${task}</div><span>${limit}</span><small>${note}</small><img class="delete" src="img/flower.svg"></li>`;
      list.innerHTML += html;    
     }
 
