@@ -1,0 +1,46 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>honamiのTODOLIST</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;500;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <div class="bg">
+  <div class="inner1000">
+    <section id="todo_form">
+    <h1>TODO LIST</h1>
+    <h2>やりたいこと</h2>
+       <form class="add" value="hello">
+        <div><label name="add">やること</label><br><input type="text" name="add" placeholder="todo"></div>
+        <div><label>期限</label><br><input type="date" name="date" id="today"><br></div>
+        <div><label>メモ</label><br></r><textarea name="note" rows="4" cols="40" placeholder="note"></textarea></div>
+        <div class="btn">
+          <button><div class="eff"></div><span>GO!</span>
+        </button>
+      </div>
+      </form>
+    </section>
+
+    <div class="flex">
+    <section id="todolist">
+      <h2>やることリスト</h2>
+        <ul id="todo">
+        <ul>
+    </section>
+
+    <section id="donelist">
+     <h2>完了</h2>
+        <ul id="done">
+        <ul>
+    </section>
+  </div>
+
+    </div>
+  </div>
+
+
+  <script src="js/main.js"></script>
+</body>
+</html>
