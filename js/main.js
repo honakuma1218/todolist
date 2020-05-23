@@ -1,64 +1,70 @@
-
-//今日の日付をdateへ入れる
-var date = new Date();
-
-        var yyyy = date.getFullYear();
-        var mm = ("0"+(date.getMonth()+1)).slice(-2);
-        var dd = ("0"+date.getDate()).slice(-2);
-
-    document.querySelector("#today").value=yyyy+'-'+mm+'-'+dd;
-
-
-
+// 要素取得
+const limit = document.querySelector("#today");
 const addTask = document.querySelector('.add');
 const list = document.querySelector('#todo');
 const doneList = document.querySelector('#done');
-const taskName = document.querySelectorAll('.task_name');
-const bgColor = document .querySelector('.bg');
-const colors =['bg1','bg2','bg3','bg4','bg5','bg6','bg7','bg8','bg9','bg10'];
+const bgColor = document.querySelector('.bg');
 
- const createTodoList = (task,limit,note=none )=>{
-     const html = `<li class="addedTask"><div class="task_name">${task}</div><span>${limit}</span><small>${note}</small><img class="delete" src="img/flower.svg"></li>`;
-     list.innerHTML += html;    
+// 期限を今日に設定
+setToday(limit);
+
+// タスク追加ボタンが押されたとき
+addTask.addEventListener('submit', e => {
+    e.preventDefault();
+    createTodoList(list, addTask.add.value.trim(), addTask.date.value, addTask.note.value);
+    addTask.reset();
+    // 期限を今日に設定
+    setToday(limit);
+});
+
+// タスク完了ボタンが押されたとき
+list.addEventListener('click', e => {
+    if (e.target.classList.contains('delete')) {
+        // タスクをやることリストから完了に移動
+        archiveTask(e, donelist);
+        // バックグラウンドの色を変更
+        changeBgColor(bgColor);
     }
+});
 
-    addTask.addEventListener('submit', e =>{
-        e.preventDefault();
+function createTodoList(list, task, limit, note=none) {
+    if (task.length = 0) return;
+    const html = `<li class="addedTask"><div class="task_name">${task}</div><span>${limit}</span><small>${note}</small><img class="delete" src="img/flower.svg"></li>`;
+    list.innerHTML += html;
+}
 
-        const task = addTask.add.value.trim();
-        const limit = addTask.date.value;
-        const note = addTask.note.value;
-        if(task.length){
-            createTodoList(task,limit,note);
-            addTask.reset();
-        }
-    });
+function setToday(limit) {
+    // 今日の日付を#todayへ入れる
+    const date = new Date();
+    const yyyy = date.getFullYear();
+    const mm = ("0"+(date.getMonth()+1)).slice(-2);
+    const dd = ("0"+date.getDate()).slice(-2);
+    limit.value = `${yyyy}-${mm}-${dd}`;
+}
 
-    list.addEventListener('click', e => {
-        if (e.target.classList.contains('delete')){
+function archiveTask(e, donelist) {
+    // タスクを完了に移動
+    const donehtml = `<li class="doneTask">${e.target.parentElement.firstChild.innerHTML}</li>`;
+    donelist.innerHTML += donehtml;
+    // リスト内のタスクをフェードアウト
+    e.target.parentElement.classList.add('fade-out');
+    // リストからタスクを完全に消去
+    setTimeout(function() {
+        e.target.parentElement.remove();
+    }, 300);
+}
 
-          
-            const donehtml = `<li class="doneTask">${e.target.parentElement.firstChild.innerHTML}</li>`;
-            donelist.innerHTML += donehtml; 
-            e.target.parentElement.classList.add('fade-out');
-            const newBg = colors[Math.floor(Math.random()*colors.length)];
-            bgColor.className = newBg;
-            bgColor.classList.add('fade-in');
-        }
+function changeBgColor(bgColor) {
+    // 色変更
+    const newBgColorClass = `bg${randomInt(1, 10)}`;
+    bgColor.className = newBgColorClass;
+    // フェードイン
+    bgColor.classList.add('fade-in');
+    setTimeout(function() {
+        bgColor.classList.remove('fade-in');
+    }, 300);
+}
 
-        if(e.target.parentElement.classList.contains('fade-out')){
-            setTimeout(function(){ 
-                e.target.parentElement.remove();
-              }, 300);
-        }
-        if(bgColor.classList.contains('fade-in')){
-            setTimeout(function(){ 
-                bgColor.classList.remove('fade-in');
-              }, 300);
-        }
-
-
-        
-        });
-
-       
+function randomInt(min, max) {
+    return Math.floor( Math.random() * (max + 1 - min) ) + min;
+}
