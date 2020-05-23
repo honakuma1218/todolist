@@ -117,6 +117,9 @@ form {
     background-color: transparent;
     position: relative;
   }
+  textarea{
+    resize: vertical;
+  }
 
   input:hover,
   textarea:hover{
