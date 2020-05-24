@@ -200,11 +200,12 @@ button:hover span{
   }
 .addedTask .task_name{
       display:inline-block;
+      margin: 0 20px 0 0;
   }
 .addedTask span{
     font-size: 0.8rem;
     color: #555;
-    margin: 0 20px;
+    margin: 0 20px 0 0;
   }
 .addedTask small{
     font-size: 0.8rem;
