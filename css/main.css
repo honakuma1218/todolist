@@ -185,9 +185,9 @@ button:hover span{
     position:relative;
   }  
 .addedTask{
-    margin: 0 auto;
-    width: 95%;
-    padding: 10px 100px 10px 25px;
+    margin: 0;
+    width: 85%;
+    padding:10px 100px 20px 25px;
   }
 #donelist .doneTask{
       color: #666666;
