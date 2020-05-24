@@ -38,7 +38,7 @@ doneList.addEventListener('click', e => {
 
 function createTodoList(todoList, task, limit, note=none) {
     if (task.length = 0) return;
-    const html = `<li class="addedTask"><div class="task_name">${task}</div><br class=""br-sp><span>${limit}</span><small>${note}</small><img class="delete" src="img/flower.svg"></li>`;
+    const html = `<li class="addedTask"><div class="task_name">${task}</div><br class="br-sp"><span>${limit}</span><small>${note}</small><img class="delete" src="img/flower.svg"></li>`;
     todoList.innerHTML += html;
 }
 
