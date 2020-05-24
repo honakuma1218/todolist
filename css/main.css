@@ -262,6 +262,9 @@ button:hover span{
 }
 
 @media screen and (max-width: 559px) {
+    .br-sp{
+        display: block;
+    }
     h1,#todo_form h2,
     #todolist h2,
     #donelist h2{
