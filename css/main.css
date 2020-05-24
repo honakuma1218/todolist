@@ -10,16 +10,16 @@ body{
     transition:1s ease-in-out;;
 }
 .bg{
-    background: #8360c3;
-    background: linear-gradient(to right, #8360c3, #2ebf91);
-}
+    background-color: #FAACA8;
+    background-image: linear-gradient(19deg, #FAACA8 0%, #DDD6F3 100%);
+    }
 .bg1{
     background-color: #FBAB7E;
     background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
 }
 .bg2{
-    background-color: #FAACA8;
-    background-image: linear-gradient(19deg, #FAACA8 0%, #DDD6F3 100%);
+    background: #8360c3;
+    background: linear-gradient(to right, #8360c3, #2ebf91);
 }
 .bg3{
     background-color: #F4D03F;
