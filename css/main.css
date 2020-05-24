@@ -1,3 +1,6 @@
+.br-sp{
+    display: none;
+}
 .inner1000{
     max-width:1000px;
     margin: 0 auto;
@@ -288,5 +291,19 @@ button:hover span{
     .addedTask{
         margin: 0 auto;
         width: 95%;
+        padding: 10px 100px 10px 25px;
+        line-height: 30px;
+    }
+    .addedTask span{
+        margin: 0;
+    }
+    .addedTask small {
+        font-size: 0.9rem;
+        margin: 0;
+        width: 100%;
+    }
+    .doneTask {
+        line-height: 1.5;
+        padding: 20px;
     }
 }
