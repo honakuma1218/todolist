@@ -1,7 +1,7 @@
 // 要素取得
 const limit = document.querySelector("#today");
-const addTask = document.querySelector('.add');
-const list = document.querySelector('#todo');
+const addForm = document.querySelector('.add_form');
+const todoList = document.querySelector('#todo');
 const doneList = document.querySelector('#done');
 const bgColor = document.querySelector('.bg');
 
@@ -9,28 +9,37 @@ const bgColor = document.querySelector('.bg');
 setToday(limit);
 
 // タスク追加ボタンが押されたとき
-addTask.addEventListener('submit', e => {
+addForm.addEventListener('submit', e => {
     e.preventDefault();
-    createTodoList(list, addTask.add.value.trim(), addTask.date.value, addTask.note.value);
-    addTask.reset();
+    createTodoList(todoList, addForm.add.value.trim(), addForm.date.value, addForm.note.value);
+    addForm.reset();
     // 期限を今日に設定
     setToday(limit);
 });
 
 // タスク完了ボタンが押されたとき
-list.addEventListener('click', e => {
+todoList.addEventListener('click', e => {
     if (e.target.classList.contains('delete')) {
         // タスクをやることリストから完了に移動
-        archiveTask(e, donelist);
+        archiveTask(e, doneList);
         // バックグラウンドの色を変更
         changeBgColor(bgColor);
     }
 });
 
-function createTodoList(list, task, limit, note=none) {
+
+//完了タスクをクリックしたとき
+doneList.addEventListener('click', e => {
+    if (e.target.classList.contains('doneTask')) {
+        //クリックされた要素を削除
+        deleteTask(e);
+    }
+});
+
+function createTodoList(todoList, task, limit, note=none) {
     if (task.length = 0) return;
     const html = `<li class="addedTask"><div class="task_name">${task}</div><span>${limit}</span><small>${note}</small><img class="delete" src="img/flower.svg"></li>`;
-    list.innerHTML += html;
+    todoList.innerHTML += html;
 }
 
 function setToday(limit) {
@@ -42,10 +51,10 @@ function setToday(limit) {
     limit.value = `${yyyy}-${mm}-${dd}`;
 }
 
-function archiveTask(e, donelist) {
+function archiveTask(e, doneList) {
     // タスクを完了に移動
     const donehtml = `<li class="doneTask">${e.target.parentElement.firstChild.innerHTML}</li>`;
-    donelist.innerHTML += donehtml;
+    doneList.innerHTML += donehtml;
     // リスト内のタスクをフェードアウト
     e.target.parentElement.classList.add('fade-out');
     // リストからタスクを完全に消去
@@ -63,6 +72,10 @@ function changeBgColor(bgColor) {
     setTimeout(function() {
         bgColor.classList.remove('fade-in');
     }, 300);
+}
+
+function deleteTask(e) {
+    e.target.remove();
 }
 
 function randomInt(min, max) {
